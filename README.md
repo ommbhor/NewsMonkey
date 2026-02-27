@@ -1,3 +1,138 @@
+# 📰 NewsMonkey – React News Web App
+
+NewsMonkey is a responsive news web application built using **React.js** that fetches real-time news articles from a public News API.  
+It provides categorized news with a clean UI and smooth user experience.
+
+---
+
+## 🚀 Live Demo
+
+👉 Add your deployed link here (Netlify / Vercel / GitHub Pages)
+
+---
+
+## 📌 Features
+
+- 🗂 Category-based news (Business, Sports, Technology, Entertainment, Health, Science)
+- 🌍 Top headlines by country
+- 🔄 Real-time news fetching using API
+- ⚡ Loading spinner for better UX
+- 📱 Fully responsive design
+- 🔎 Clean and minimal user interface
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React.js
+- **Styling:** CSS
+- **Language:** JavaScript (ES6+)
+- **API:** News API
+- **Routing:** React Router
+
+---
+
+## 📂 Project Structure
+
+```
+NewsMonkey/
+│
+├── src/
+│   ├── components/
+│   ├── App.js
+│   ├── index.js
+│   └── ...
+│
+├── public/
+├── package.json
+└── README.md
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/ommbhor/NewsMonkey.git
+```
+
+### 2️⃣ Navigate to project folder
+
+```bash
+cd NewsMonkey
+```
+
+### 3️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 4️⃣ Add your News API Key
+
+Create a `.env` file in the root directory and add:
+
+```
+REACT_APP_NEWS_API=your_api_key_here
+```
+
+You can get your API key from: https://newsapi.org/
+
+### 5️⃣ Start the development server
+
+```bash
+npm start
+```
+
+The app will run on:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 📸 Screenshots
+
+_Add screenshots here once deployed_
+
+---
+
+## 🌟 Future Improvements
+
+- Dark mode
+- Search functionality
+- Pagination / Infinite scroll
+- Bookmark feature
+- Deployment with custom domain
+- Performance optimization
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📄 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Om Bhor**
+
+- GitHub: https://github.com/ommbhor
+- LinkedIn: Add your LinkedIn profile link here
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
