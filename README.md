@@ -94,11 +94,14 @@ http://localhost:3000
 
 ---
 
+
 ## 📸 Screenshots
 
-_Add screenshots here once deployed_
+### 🏠 Home Page
+![Home Page](Assets/Home.png)
 
----
+### 📰 News Category Page
+![Category Page](Assets/Category.png)
 
 ## 🌟 Future Improvements
 
