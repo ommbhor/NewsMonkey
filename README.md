@@ -98,10 +98,10 @@ http://localhost:3000
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home Page](Assets/Home.png)
+![Home Page](Assests/Home.png)
 
 ### 📰 News Category Page
-![Category Page](Assets/Category.png)
+![Category Page](Assests/Category.png)
 
 ## 🌟 Future Improvements
 
