@@ -7,7 +7,7 @@ It provides categorized news with a clean UI and smooth user experience.
 
 ## 🚀 Live Demo
 
-👉 Add your deployed link here (Netlify / Vercel / GitHub Pages)
+👉 https://news-monkey-seven-iota.vercel.app
 
 ---
 
