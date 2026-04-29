@@ -30,7 +30,8 @@ export class News extends Component {
     }
 
     async updateNews() {
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=6371b59dd4044ea29076b4bbe1c76d2d&page=1&pageSize=${this.props.pageSize}`
+        const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`
         this.setState({ loading: true })
         let data = await fetch(url);
         let parseddata = await data.json();
@@ -57,13 +58,15 @@ export class News extends Component {
     }
 
      fetchMoreData = async () => {
-        this.setState({ page: this.state.page + 1 })
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=6371b59dd4044ea29076b4bbe1c76d2d&page=1&pageSize=${this.props.pageSize}`
+        const nextPage = this.state.page + 1;
+        this.setState({ page: nextPage })
+        const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${nextPage}&pageSize=${this.props.pageSize}`
         let data = await fetch(url);
         let parseddata = await data.json();
         console.log(parseddata)
         this.setState({
-            articles: this.state.articles.concat(parseddata.articles),
+            articles: this.state.articles ? this.state.articles.concat(parseddata.articles) : parseddata.articles,
             totalResults: parseddata.totalResults,
             loading: false,
         })
@@ -78,12 +81,12 @@ export class News extends Component {
                 <InfiniteScroll
                     dataLength={this.state.articles ? this.state.articles.length : 0}
                     next={this.fetchMoreData}
-                    hasMore={this.state.articles.length !== this.state.totalResults}
+                    hasMore={this.state.articles && this.state.articles.length < this.state.totalResults}
                     loader={<Spinner />}
                 >
                     <div className="container">
                         <div className="row">
-                            {this.state.articles.map((element) => {
+                            {this.state.articles && this.state.articles.map((element) => {
                                 return <div className="col-md-4" key={element.url}>
                                     <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} />
                                 </div>
