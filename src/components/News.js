@@ -30,8 +30,8 @@ export class News extends Component {
     }
 
     async updateNews() {
-        const apiKey = process.env.REACT_APP_NEWS_API_KEY;
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`
+        const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
+        const url = `${baseUrl}/api/news?country=${this.props.country}&category=${this.props.category}&page=${this.state.page}&pageSize=${this.props.pageSize}`
         this.setState({ loading: true })
         try {
             let data = await fetch(url);
@@ -73,8 +73,8 @@ export class News extends Component {
      fetchMoreData = async () => {
         const nextPage = this.state.page + 1;
         this.setState({ page: nextPage })
-        const apiKey = process.env.REACT_APP_NEWS_API_KEY;
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${nextPage}&pageSize=${this.props.pageSize}`
+        const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
+        const url = `${baseUrl}/api/news?country=${this.props.country}&category=${this.props.category}&page=${nextPage}&pageSize=${this.props.pageSize}`
         try {
             let data = await fetch(url);
             if (!data.ok) {
