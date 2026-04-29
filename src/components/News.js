@@ -76,7 +76,7 @@ export class News extends Component {
                 <h1 className='text-center my-3' style={{padding: "20px;"}}>NewsMonkey - Top {this.capitalizeFL(this.props.category)} Headlines</h1>
                 {this.state.loading && <Spinner />}
                 <InfiniteScroll
-                    dataLength={this.state.articles.length}
+                    dataLength={this.state.articles ? this.state.articles.length : 0}
                     next={this.fetchMoreData}
                     hasMore={this.state.articles.length !== this.state.totalResults}
                     loader={<Spinner />}
