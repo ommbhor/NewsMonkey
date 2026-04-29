@@ -33,14 +33,27 @@ export class News extends Component {
         const apiKey = process.env.REACT_APP_NEWS_API_KEY;
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`
         this.setState({ loading: true })
-        let data = await fetch(url);
-        let parseddata = await data.json();
-        console.log(parseddata)
-        this.setState({
-            articles: parseddata.articles,
-            totalResults: parseddata.totalResults,
-            loading: false,
-        })
+        try {
+            let data = await fetch(url);
+            if (!data.ok) {
+                throw new Error(`API Error: ${data.status} ${data.statusText}`);
+            }
+            let parseddata = await data.json();
+            console.log(parseddata)
+            if (parseddata.articles) {
+                this.setState({
+                    articles: parseddata.articles,
+                    totalResults: parseddata.totalResults,
+                    loading: false,
+                })
+            } else {
+                console.error('No articles in response:', parseddata);
+                this.setState({ loading: false })
+            }
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            this.setState({ loading: false })
+        }
     }
 
     async componentDidMount() {
@@ -62,14 +75,24 @@ export class News extends Component {
         this.setState({ page: nextPage })
         const apiKey = process.env.REACT_APP_NEWS_API_KEY;
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${nextPage}&pageSize=${this.props.pageSize}`
-        let data = await fetch(url);
-        let parseddata = await data.json();
-        console.log(parseddata)
-        this.setState({
-            articles: this.state.articles ? this.state.articles.concat(parseddata.articles) : parseddata.articles,
-            totalResults: parseddata.totalResults,
-            loading: false,
-        })
+        try {
+            let data = await fetch(url);
+            if (!data.ok) {
+                throw new Error(`API Error: ${data.status} ${data.statusText}`);
+            }
+            let parseddata = await data.json();
+            console.log(parseddata)
+            if (parseddata.articles) {
+                this.setState({
+                    articles: this.state.articles ? this.state.articles.concat(parseddata.articles) : parseddata.articles,
+                    totalResults: parseddata.totalResults,
+                    loading: false,
+                })
+            }
+        } catch (error) {
+            console.error('Error fetching more news:', error);
+            this.setState({ loading: false })
+        }
     };
 
     render() {
